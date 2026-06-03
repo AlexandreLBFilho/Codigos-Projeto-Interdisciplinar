@@ -19,7 +19,7 @@ public class main {
 					while (opcaoSistema != 3) {
 						System.out.println("1 - Anunciar Produto");
 						System.out.println("2 - Listar meus Anúncios");
-						System.out.println("3 - Sair");
+						System.out.println("3 - Listar A");
 						opcaoSistema = sistema.lerInt();
 
 						if (opcaoSistema == 1) {
