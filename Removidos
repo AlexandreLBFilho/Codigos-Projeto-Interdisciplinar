@@ -1,0 +1,20 @@
+Método de Construção de AnuncioMaquinario SEM VOLTAGEM:
+  
+  public AnuncioMaquinario(String titulo, String descricao, double valor, 
+    						LocalDate data, String urlImagem, boolean principal, long empresaCnpj,
+                              String nome, String estadoConservacao, String marca, String modelo, 
+                              int anoFabricacao, double peso, String dimensao, int tipoCategoria) {
+        
+        super(titulo, descricao, valor, data, urlImagem, principal);
+        this.setEmpresaCnpj(empresaCnpj);
+        
+        this.nome = nome;
+        this.estadoConservacao = estadoConservacao;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anoFabricacao = anoFabricacao;
+        this.peso = peso;
+        this.dimensao = dimensao;
+        this.categoria = Categoria.classificarMaquinario(tipoCategoria);
+        this.voltagem = "N/A"; 
+    }
