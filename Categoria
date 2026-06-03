@@ -1,18 +1,26 @@
 public class Categoria {
 
-    public static String classificarMaquinario(double peso, String voltagem) {
-        if (peso > 1000) {
-            return "Maquinário Pesado";
-        } else if (voltagem.equals("380V")) {
-            return "Maquinário Industrial";
+    public static String classificarMaquinario(int tipo) {
+        String resposta = " ";
+    	if (tipo == 1) {
+        	resposta = "Máquinas de Usinagem";
+        } else if(tipo == 2) {
+        	resposta = "Equipamentos de Solda e Corte";
+        } else {
+        	resposta = "Máquinas de Conformação";
         }
-        return "Maquinário Geral";
+    return resposta;	
     }
-
-    public static String classificarRecurso(String tipoMaterial) {
-        if (tipoMaterial.equalsIgnoreCase("Ferro") || tipoMaterial.equalsIgnoreCase("Aço")) {
-            return "Metais";
+    
+    public static String classificarRecurso(int tipo) {
+        String resposta = " ";
+    	if (tipo == 1) {
+        	resposta = "Matéria-Prima";
+        } else if(tipo == 2) {
+        	resposta = "Insumos e Consumíveis";
+        } else {
+        	resposta = "Ferramentas e Acessórios";
         }
-        return "Matéria-prima Geral";
+    return resposta;	
     }
 }
