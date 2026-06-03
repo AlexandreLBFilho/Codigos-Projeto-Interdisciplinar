@@ -17,6 +17,10 @@ public class SistemaGeral {
         }
     }
     
+    public void adcionarEndereco (Endereco endereco) { //Consertar isso: Gerar novas instãncias de "Endereco" aqui nessa Classe
+    	this.listaEnderecos.add(endereco);				//para que esse endereço possa ser adcionado na listaEnderecos
+    }
+    
     public static boolean isCnpjValido(long cnpj) {
         String texto;
     	if (cnpj == 0) {
@@ -170,7 +174,14 @@ public class SistemaGeral {
     	System.out.println("Informe o CNPJ da Empresa:");
         long empresaCnpj = Long.parseLong(ler.nextLine().replaceAll("[^0-9]", "").trim());
         System.out.println(" ");
-
+        
+        System.out.println("Informe a Categoria do Item:");
+        System.out.println("1 - Máquinas de Usinagem");
+        System.out.println("2 - Equipamentos de Solda e Corte");
+        System.out.println("3 - Máquinas de Conformação");
+        int tipoCategoria = ler.nextInt();
+        System.out.println(" ");
+        
         System.out.println("Informe o Título do Anuncio:");
         String titulo = ler.nextLine();
         System.out.println(" ");
@@ -191,9 +202,22 @@ public class SistemaGeral {
         System.out.println("Informe a URL da Imagem:");
         String urlImagem = ler.nextLine().trim();
         System.out.println(" ");
-
-        System.out.println("É a Imagem Principal? (true/false):");
-        boolean principal = Boolean.parseBoolean(ler.nextLine().trim());
+        
+        String resposta = "N/A";
+        boolean principal = true;
+        while (resposta.equals("N/A")) {
+	        System.out.println("É a Imagem Principal? (S/N):");
+	        resposta = ler.next();
+	        if (resposta == "S") {
+		        principal = true;
+		    }else if (resposta == "N") {
+		        principal = false;
+		    }else {
+		    	resposta = "N/A";
+		    	System.out.println("Resposta inválida.");
+		    	System.out.println(" ");
+		    }
+        }    
         System.out.println(" ");
 
         System.out.println("Informe o Nome do Produto:");
@@ -228,10 +252,6 @@ public class SistemaGeral {
         String voltagem = ler.nextLine().trim();
         System.out.println(" ");
 
-        System.out.println("Informe o Tipo de Categoria:");
-        String tipoCategoria = ler.nextLine().trim();
-        System.out.println(" ");
-
         AnuncioMaquinario anuncio = new AnuncioMaquinario(empresaCnpj, titulo, descricao, valor,
                 data, urlImagem, principal, nome, estadoConservacao,
                 marca, modelo, anoFabricacao, peso, dimensao, voltagem, tipoCategoria);
@@ -246,6 +266,16 @@ public class SistemaGeral {
 
     	System.out.println("Informe o CNPJ da Empresa:");
         long empresaCnpj = Long.parseLong(ler.nextLine().replaceAll("[^0-9]", "").trim());
+        System.out.println(" ");
+        
+        System.out.println("Informe a Categoria do Item:");
+        System.out.println("1 - Matéria-Prima");
+        System.out.println("(Chapas, perfis, tubos, barras metálicas, aço, alumínio)");
+        System.out.println("2 - Insumos e Consumíveis");
+        System.out.println("(Eletrodos, discos de corte, lubrificantes, gases industriais)");
+        System.out.println("3 - Ferramentas e Acessórios");
+        System.out.println("(Brocas, fresas, porta-ferramentas, dispositivos de fixação)");
+        int tipoCategoria = ler.nextInt();
         System.out.println(" ");
 
         System.out.println("Informe o Título do Anúncio:");
@@ -273,10 +303,6 @@ public class SistemaGeral {
         String nome = ler.nextLine().trim();
         System.out.println(" ");
 
-        System.out.println("Informe o Tipo de Material:");
-        String tipoMaterial = ler.nextLine().trim();
-        System.out.println(" ");
-
         System.out.println("Informe a Quantidade (apenas números):");
         double quantidade = Double.parseDouble(ler.nextLine().replace(",", ".").trim());
         System.out.println(" ");
@@ -289,12 +315,8 @@ public class SistemaGeral {
         double peso = Double.parseDouble(ler.nextLine().replace(",", ".").trim());
         System.out.println(" ");
 
-        System.out.println("Informe a Categoria (Ferro ou Aço):");
-        String tipoCategoria = ler.nextLine().trim();
-        System.out.println(" ");
-
         AnuncioRecurso anuncio = new AnuncioRecurso(empresaCnpj, titulo, descricao, valor,
-                data, urlImagemPrincipal, nome, tipoMaterial, quantidade, unidadeMedida,
+                data, urlImagemPrincipal, nome, quantidade, unidadeMedida,
                 peso, tipoCategoria);
         this.listaAnuncioRecurso.add(anuncio);
         System.out.println("Anúncio de recurso cadastrado com sucesso!");
@@ -310,11 +332,11 @@ public class SistemaGeral {
 
             if (anuncio.getEmpresaCnpj() == empresa.getCnpj()) {
 
-                System.out.println("ID: " + anuncio.getId());
                 System.out.println("Título: " + anuncio.getTitulo());
                 System.out.println("Descrição: " + anuncio.getDescricao());
                 System.out.println("Valor: R$ " + anuncio.getValor());
                 System.out.println("Produto: " + anuncio.getNome());
+                System.out.println("Categoria: " + anuncio.getCategoria());
                 System.out.println("--------------------------------");
 
                 encontrou = true;
@@ -327,11 +349,11 @@ public class SistemaGeral {
 
             if (anuncio.getEmpresaCnpj() == empresa.getCnpj()) {
 
-                System.out.println("ID: " + anuncio.getId());
                 System.out.println("Título: " + anuncio.getTitulo());
                 System.out.println("Descrição: " + anuncio.getDescricao());
                 System.out.println("Valor: R$ " + anuncio.getValor());
                 System.out.println("Produto: " + anuncio.getNome());
+                System.out.println("Categoria: " + anuncio.getCategoria());
                 System.out.println("--------------------------------");
 
                 encontrou = true;
