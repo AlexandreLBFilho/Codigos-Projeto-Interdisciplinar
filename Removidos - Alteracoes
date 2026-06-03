@@ -18,3 +18,26 @@ Método de Construção de AnuncioMaquinario SEM VOLTAGEM:
         this.categoria = Categoria.classificarMaquinario(tipoCategoria);
         this.voltagem = "N/A"; 
     }
+
+Alterações Código PI
+
+- Empresa agora não é mais responsável por criar uma nova instância de Endereço
+
+- Removido o construtor de AnuncioMaquinario que não incluí VOLTAGEM
+
+- Removido o atributo "tipoMaterial" da classe AnuncioRecurso
+
+
+Com base no foco em Manufatura / Metalurgia, aqui estão as sugestões de categorias:
+
+🔩 Maquinário — 3 categorias
+Categoria
+Máquinas de Usinagem (Tornos, fresadoras, centros de usinagem CNC, retíficas)
+Equipamentos de Solda e Corte (Solda MIG/TIG/Eletrodo, plasma, laser, oxicorte)
+Máquinas de Conformação (Prensas, dobradeiras, guilhotinas, laminadoras)
+
+📦 Recurso — 3 categorias
+Categoria
+Matéria-Prima Chapas, perfis, tubos, barras metálicas, aço, alumínio)
+Insumos e Consumíveis (Eletrodos, discos de corte, lubrificantes, gases industriais)
+Ferramentas e Acessórios (Brocas, fresas, porta-ferramentas, dispositivos de fixação)
