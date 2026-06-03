@@ -15,18 +15,17 @@ public class AnuncioRecurso extends Anuncio {
 
     public AnuncioRecurso(long empresaCnpj, String titulo, String descricao, double valor, 
     		LocalDate data, String urlImagemPrincipal,
-                          String nome, String tipoMaterial, double quantidade, 
-                          String unidadeMedida, double peso, String tipoCategoria) {
+                          String nome, double quantidade, 
+                          String unidadeMedida, double peso, int tipoCategoria) {
         
         super(titulo, descricao, valor, data, urlImagemPrincipal, true);
         this.setEmpresaCnpj(empresaCnpj);
         
         this.nome = nome;
-        this.tipoMaterial = tipoMaterial;
         this.quantidade = quantidade;
         this.unidadeMedida = unidadeMedida;
         this.peso = peso;
-        this.categoria = Categoria.classificarRecurso(tipoMaterial);
+        this.categoria = Categoria.classificarRecurso(tipoCategoria);
     }
 
 
