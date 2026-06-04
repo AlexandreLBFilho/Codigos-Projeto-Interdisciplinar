@@ -6,4 +6,13 @@ public class Imagem {
 		this.url = url;
 		this.principal = principal;
 	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public boolean isPrincipal() {
+		return principal;
+	}
+	
 }
