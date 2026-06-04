@@ -6,20 +6,21 @@ public class main {
 		System.out.println("--------------------------");
 
 		SistemaGeral sistema = new SistemaGeral();
-		sistema.exibirMenuInicial();
+		sistema.exibirMenuInicial(); 							//Menu Inicial
 		int opcao = sistema.lerInt();
 
 		while (true) {
 
-			if (opcao == 1) {
+			if (opcao == 1) { 									//Escolha de Logar no Sistema
 				Empresa empresa = sistema.realizarLogin();
 				if (empresa != null) {
 					int opcaoSistema = 0;
 					
-					while (opcaoSistema != 3) {
+					while (opcaoSistema != 4) {					//Enquanto a opção for diferente de 4, irá rodar o menu "logado"
 						System.out.println("1 - Anunciar Produto");
 						System.out.println("2 - Listar meus Anúncios");
-						System.out.println("3 - Listar A");
+						System.out.println("3 - Procurar Anúncios do Site");
+						System.out.println("4 - Voltar");
 						opcaoSistema = sistema.lerInt();
 
 						if (opcaoSistema == 1) {
@@ -42,8 +43,10 @@ public class main {
 								}
 							}
 						} else if (opcaoSistema == 2) {
-						sistema.listarAnunciosEmpresa(empresa);
-						System.out.println(" ");
+							sistema.listarAnunciosEmpresa(empresa);
+							System.out.println(" ");
+						} else if (opcaoSistema == 3) {
+							sistema.procurarAnuncios();
 						} else {
 							System.out.println("Opção inválida!");
 						}					
@@ -55,8 +58,16 @@ public class main {
 				sistema.cadastrarEmpresa();
 				sistema.exibirMenuInicial();
 				opcao = sistema.lerInt();
+			} else if (opcao == 3) {
+				System.out.println(" ");
+				System.out.println("Encerrando...");
+				break;
 			} else if (opcao == 4) {
 				sistema.cadastroEmpresaTeste();
+				sistema.exibirMenuInicial();
+				opcao = sistema.lerInt();
+			} else if (opcao == 5) {
+				sistema.cadastroAnunciosTeste();
 				sistema.exibirMenuInicial();
 				opcao = sistema.lerInt();
 			} else {
