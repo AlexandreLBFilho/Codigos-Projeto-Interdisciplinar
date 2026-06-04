@@ -17,10 +17,6 @@ public class SistemaGeral {
         }
     }
     
-    public void adcionarEndereco (Endereco endereco) { //Consertar isso: Gerar novas instãncias de "Endereco" aqui nessa Classe
-    	this.listaEnderecos.add(endereco);				//para que esse endereço possa ser adcionado na listaEnderecos
-    }
-    
     public static boolean isCnpjValido(long cnpj) {						//Valida CNPJ
         String texto;
     	if (cnpj == 0) {
